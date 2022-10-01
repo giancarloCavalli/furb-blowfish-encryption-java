@@ -35,11 +35,9 @@ public class Cases {
 		String algorithm = cipher.getAlgorithm().split("/")[0];
 		Key secretKey = new SecretKeySpec(keyText.getBytes(), algorithm);
 		
-		String text = "COMPUTADOR";		
-		
 		cipher.init(Cipher.ENCRYPT_MODE, secretKey);
 		
-		byte[] cipherBytes = cipher.doFinal(text.getBytes());
+		byte[] cipherBytes = cipher.doFinal(textToBeEncoded.getBytes());
 		
 		return cipherBytes;
 	}
