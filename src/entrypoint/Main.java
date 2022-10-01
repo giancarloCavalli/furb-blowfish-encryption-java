@@ -21,6 +21,9 @@ public class Main {
 		
 		System.out.println("\n==============");
 		Cases.Case3();
+		
+		System.out.println("\n==============");
+		Cases.Case4();
 	}
 	
 }
