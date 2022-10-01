@@ -16,7 +16,7 @@ public class Main {
 	private static void presentCases() throws Exception {
 		Cases.Case1();
 		
-		System.out.println("\n");
+		System.out.println("\n==============");
 		Cases.Case2();
 	}
 	
