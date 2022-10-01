@@ -18,6 +18,9 @@ public class Main {
 		
 		System.out.println("\n==============");
 		Cases.Case2();
+		
+		System.out.println("\n==============");
+		Cases.Case3();
 	}
 	
 }
