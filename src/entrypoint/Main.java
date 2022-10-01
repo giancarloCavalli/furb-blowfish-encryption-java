@@ -1,6 +1,6 @@
 package entrypoint;
 
-import core.domain.Cases;
+import core.services.Cases;
 
 public class Main {
 
@@ -24,6 +24,9 @@ public class Main {
 		
 		System.out.println("\n==============");
 		Cases.Case4();
+		
+		System.out.println("\n==============");
+		Cases.Case5();
 	}
 	
 }
