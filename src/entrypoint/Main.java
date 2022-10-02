@@ -4,9 +4,9 @@ import core.services.ActivityLoggingService;
 
 public class Main {
 	
-	private ActivityLoggingService activityLogging = new ActivityLoggingService();
+	private static final ActivityLoggingService activityLogging = new ActivityLoggingService();
 
-	public void main(String[] args) {
+	public static void main(String[] args) {
 		try {
 			presentCases();
 		} catch (Exception e) {
@@ -15,7 +15,7 @@ public class Main {
 		}
 	}
 	
-	private void presentCases() throws Exception {
+	private static void presentCases() throws Exception {
 		activityLogging.Case1();
 		
 		System.out.println("\n==============");
@@ -32,6 +32,9 @@ public class Main {
 		
 		System.out.println("\n==============");
 		activityLogging.Case5();
+		
+		System.out.println("\n==============");
+		activityLogging.Case6();
 	}
 	
 }
