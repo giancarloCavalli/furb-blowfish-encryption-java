@@ -113,10 +113,10 @@ public class ActivityLoggingService {
 		IvParameterSpec initializationVector = new IvParameterSpec("11223344".getBytes());
 		
 		byte[] cipherBytes = getCipherBytes(cipher, "ABCDE", textToBeEncoded, Cipher.ENCRYPT_MODE, initializationVector);
-		String cipherInHex = Utils.getHex(cipherBytes);
+		String cipherContent = Utils.getEncode64(cipherBytes);
 		
 		// QUESTÃO 6.1
-		System.out.println("6.1) Encrypt CBC em hexadecimal (" + textToBeEncoded + "):\n" + cipherInHex);	
+		System.out.println("6.1) Encrypt CBC (" + textToBeEncoded + "):\n" + cipherContent);	
 	}
 	
 	private byte[] getCipherBytes(Cipher cipher, String keyText, String text, int cipherMode) throws Exception {
