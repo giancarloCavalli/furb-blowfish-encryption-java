@@ -7,9 +7,12 @@ import javax.crypto.spec.SecretKeySpec;
 
 import core.utils.Utils;
 
-public class Cases {
+public class ActivityLoggingService {
 	
-	public static void Case1() throws Exception {
+	public ActivityLoggingService() {
+	}
+	
+	public void Case1() throws Exception {
 		Cipher cipher = Cipher.getInstance("Blowfish/ECB/PKCS5Padding");
 		String textToBeEncoded = "FURB";
 		byte[] cipherBytes = getCipherBytes(cipher, "ABCDE", textToBeEncoded, Cipher.ENCRYPT_MODE);
@@ -22,7 +25,7 @@ public class Cases {
 		System.out.println("\n2.2) Extensão do texto cifrado:\n" + cipherInHex.length() + " caracteres hexadecimais || " + cipherBytes.length + " bytes");
 	}
 	
-	public static void Case2() throws Exception {
+	public void Case2() throws Exception {
 		Cipher cipher = Cipher.getInstance("Blowfish/ECB/PKCS5Padding");
 		String textToBeEncoded = "COMPUTADOR";
 		byte[] cipherBytes = getCipherBytes(cipher, "ABCDE", textToBeEncoded, Cipher.ENCRYPT_MODE);
@@ -42,7 +45,7 @@ public class Cases {
 		System.out.println("Isso porque a cifra neste caso é dividida em blocos de 8 bytes, obrigatoriamente.");
 	}
 	
-	public static void Case3() throws Exception {
+	public void Case3() throws Exception {
 		Cipher cipher = Cipher.getInstance("Blowfish/ECB/PKCS5Padding");
 		String textToBeEncoded = "SABONETE";
 		byte[] cipherBytes = getCipherBytes(cipher, "ABCDE", textToBeEncoded, Cipher.ENCRYPT_MODE);
@@ -62,7 +65,7 @@ public class Cases {
 		System.out.println("Isso porque a cifra neste caso é dividida em blocos de 8 bytes E DEVE HAVER PELO MENOS 1 BYTE NO FINAL INDICANDO A QTDE DE BYTES DE PREENCHIMENTO, obrigatoriamente. Neste caso, foram 8 bytes \"8\".");
 	}
 	
-	public static void Case4() throws Exception {
+	public void Case4() throws Exception {
 		Cipher cipher = Cipher.getInstance("Blowfish/ECB/PKCS5Padding");
 		String textToBeEncoded = "SABONETESABONETESABONETE";
 		byte[] cipherBytes = getCipherBytes(cipher, "ABCDE", textToBeEncoded, Cipher.ENCRYPT_MODE);
@@ -80,7 +83,7 @@ public class Cases {
 		System.out.println("Isso porque a cifra neste caso é dividida em blocos de 8 bytes E DEVE HAVER PELO MENOS 1 BYTE NO FINAL INDICANDO A QTDE DE BYTES DE PREENCHIMENTO, obrigatoriamente. Neste caso, foram 8 bytes \"8\".");
 	}
 	
-	public static void Case5() throws Exception {
+	public void Case5() throws Exception {
 		Cipher cipher = Cipher.getInstance("Blowfish/CBC/PKCS5Padding");
 		String textToBeEncoded = "FURB";
 		byte[] cipherBytes = getCipherBytes(cipher, "ABCDE", textToBeEncoded, Cipher.ENCRYPT_MODE);
@@ -98,7 +101,7 @@ public class Cases {
 		System.out.println(Utils.getEncode64(cipherDecodedBytes));
 	}
 	
-	private static byte[] getCipherBytes(Cipher cipher, String keyText, String text, int cipherMode) throws Exception {
+	private byte[] getCipherBytes(Cipher cipher, String keyText, String text, int cipherMode) throws Exception {
 		String algorithm = cipher.getAlgorithm().split("/")[0];
 		Key secretKey = new SecretKeySpec(keyText.getBytes(), algorithm);
 		

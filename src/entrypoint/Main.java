@@ -1,10 +1,12 @@
 package entrypoint;
 
-import core.services.Cases;
+import core.services.ActivityLoggingService;
 
 public class Main {
+	
+	private ActivityLoggingService activityLogging = new ActivityLoggingService();
 
-	public static void main(String[] args) {
+	public void main(String[] args) {
 		try {
 			presentCases();
 		} catch (Exception e) {
@@ -13,20 +15,23 @@ public class Main {
 		}
 	}
 	
-	private static void presentCases() throws Exception {
-		Cases.Case1();
+	private void presentCases() throws Exception {
+		activityLogging.Case1();
 		
 		System.out.println("\n==============");
-		Cases.Case2();
+		activityLogging.Case2();
 		
 		System.out.println("\n==============");
-		Cases.Case3();
+		activityLogging.Case3();
 		
 		System.out.println("\n==============");
-		Cases.Case4();
+		activityLogging.Case4();
 		
 		System.out.println("\n==============");
-		Cases.Case5();
+		activityLogging.Case5();
+		
+		System.out.println("\n==============");
+		activityLogging.Case5();
 	}
 	
 }
