@@ -38,6 +38,9 @@ public class Main {
 		
 		System.out.println("\n==============");
 		activityLogging.Case7();
+		
+		System.out.println("\n==============");
+		activityLogging.Case8();
 	}
 	
 }

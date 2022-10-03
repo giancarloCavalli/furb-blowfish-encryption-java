@@ -135,6 +135,39 @@ public class ActivityLoggingService {
 		System.out.println("7.2) O conteúdo cifrado é diferente do apresentado em 4.1 devido ao encadeamento de blocos cifrados no caso 7.1");	
 	}
 	
+	public void Case8() throws Exception {
+		Cipher cipher = Cipher.getInstance("Blowfish/CBC/PKCS5Padding");
+		String textToBeEncoded = "SABONETESABONETESABONETE";
+		
+		byte[] initializationVectorBytes = {10, 20, 30, 40, 50, 60, 70, 80};
+		
+		IvParameterSpec initializationVector = new IvParameterSpec(initializationVectorBytes);
+		
+		byte[] cipherBytes = getCipherBytes(cipher, "ABCDE", textToBeEncoded, Cipher.ENCRYPT_MODE, initializationVector);
+		String cipherInHex = Utils.getHex(cipherBytes);
+		
+		// QUESTÃO 8.1
+		System.out.println("8.1) Encrypt CBC em hexadecimal (" + textToBeEncoded + "):\n" + cipherInHex);	
+		
+		// QUESTÃO 8.2
+		System.out.println("8.2) Diferiu do item 7.1 porque o primeiro bloco teve um resultado diferente da cifra devido ao vetor de inicialização, assim alterando todo o conteúdo cifrado subsequente");
+		
+		// QUESTÃO 8.3
+		try {
+			Cipher cipherDecode = Cipher.getInstance("Blowfish/CBC/PKCS5Padding");
+			
+			byte[] initializationVectorDecodeBytes = {1, 1, 2, 2, 3, 3, 4, 4};
+			
+			IvParameterSpec initializationVectorDecode = new IvParameterSpec(initializationVectorDecodeBytes);
+			
+			byte[] cipherDecodedBytes = getCipherBytes(cipherDecode, "ABCDE", cipherInHex, Cipher.DECRYPT_MODE, initializationVectorDecode);
+			System.out.println(Utils.getHex(cipherDecodedBytes));
+		} catch (Exception e) {
+			System.out.println("8.3) Um erro ocorre apresetando a seguinte mensagem:");
+			System.out.println(e.getMessage());
+		}
+	}
+	
 	private byte[] getCipherBytes(Cipher cipher, String keyText, String text, int cipherMode) throws Exception {
 		String algorithm = cipher.getAlgorithm().split("/")[0];
 		Key secretKey = new SecretKeySpec(keyText.getBytes(), algorithm);
