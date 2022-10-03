@@ -35,6 +35,9 @@ public class Main {
 		
 		System.out.println("\n==============");
 		activityLogging.Case6();
+		
+		System.out.println("\n==============");
+		activityLogging.Case7();
 	}
 	
 }

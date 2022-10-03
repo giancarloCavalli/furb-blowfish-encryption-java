@@ -119,6 +119,22 @@ public class ActivityLoggingService {
 		System.out.println("6.1) Encrypt CBC (" + textToBeEncoded + "):\n" + cipherContent);	
 	}
 	
+	public void Case7() throws Exception {
+		Cipher cipher = Cipher.getInstance("Blowfish/CBC/PKCS5Padding");
+		String textToBeEncoded = "SABONETESABONETESABONETE";
+		
+		IvParameterSpec initializationVector = new IvParameterSpec("11223344".getBytes());
+		
+		byte[] cipherBytes = getCipherBytes(cipher, "ABCDE", textToBeEncoded, Cipher.ENCRYPT_MODE, initializationVector);
+		String cipherInHex = Utils.getHex(cipherBytes);
+		
+		// QUESTÃO 7.1
+		System.out.println("7.1) Encrypt CBC em hexadecimal (" + textToBeEncoded + "):\n" + cipherInHex);	
+		
+		// QUESTÃO 7.2
+		System.out.println("7.2) O conteúdo cifrado é diferente do apresentado em 4.1 devido ao encadeamento de blocos cifrados no caso 7.1");	
+	}
+	
 	private byte[] getCipherBytes(Cipher cipher, String keyText, String text, int cipherMode) throws Exception {
 		String algorithm = cipher.getAlgorithm().split("/")[0];
 		Key secretKey = new SecretKeySpec(keyText.getBytes(), algorithm);
