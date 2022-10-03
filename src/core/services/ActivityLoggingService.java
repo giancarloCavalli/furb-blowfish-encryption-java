@@ -163,8 +163,31 @@ public class ActivityLoggingService {
 			byte[] cipherDecodedBytes = getCipherBytes(cipherDecode, "ABCDE", cipherInHex, Cipher.DECRYPT_MODE, initializationVectorDecode);
 			System.out.println(Utils.getHex(cipherDecodedBytes));
 		} catch (Exception e) {
-			System.out.println("8.3) Um erro ocorre apresetando a seguinte mensagem:");
+			System.out.println("8.3) Um erro ocorre apresentando a seguinte mensagem:");
 			System.out.println(e.getMessage());
+		}
+	}
+	
+	public void Case9() throws Exception {
+		Cipher cipher = Cipher.getInstance("Blowfish/ECB/PKCS5Padding");
+		String textToBeEncoded = "FURB";
+		
+		byte[] cipherBytes = getCipherBytes(cipher, "ABCDE", textToBeEncoded, Cipher.ENCRYPT_MODE);
+		String cipherInHex = Utils.getHex(cipherBytes);
+		
+		try {
+			Cipher cipherDecode = Cipher.getInstance("Blowfish/CBC/PKCS5Padding");
+			
+			byte[] initializationVectorDecodeBytes = {1, 1, 1, 1, 1};
+			
+			IvParameterSpec initializationVectorDecode = new IvParameterSpec(initializationVectorDecodeBytes);
+			
+			byte[] cipherDecodedBytes = getCipherBytes(cipherDecode, "ABCDE", cipherInHex, Cipher.DECRYPT_MODE, initializationVectorDecode);
+			System.out.println(Utils.getHex(cipherDecodedBytes));
+		} catch (Exception e) {
+			System.out.println("9.1) Um erro ocorre apresentando a seguinte mensagem:");
+			System.out.println(e.getMessage());
+			System.out.println("O vetor de inicializacao nao contem 8 bytes como deveria no modo ECB");
 		}
 	}
 	
